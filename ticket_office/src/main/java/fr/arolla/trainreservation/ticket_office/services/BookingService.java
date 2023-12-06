@@ -85,7 +85,7 @@ public class BookingService {
         return seats;
     }
 
-    private int getMaximumBookingCapacity(ArrayList<Seat> seats){
+    protected int getMaximumBookingCapacity(ArrayList<Seat> seats){
         return (int) (seats.size()*0.7);
     }
 
@@ -98,8 +98,8 @@ public class BookingService {
                 .collect(Collectors.groupingBy(Seat::coach, Collectors.mapping(Seat::number, Collectors.counting())));
     }
 
-    private Map<String,Long> getMaximumSeatsNumberByCoach(ArrayList<Seat> availableSeats){
-        return availableSeats.stream()
+    private Map<String,Long> getMaximumSeatsNumberByCoach(ArrayList<Seat> seats){
+        return seats.stream()
                 .collect(Collectors.groupingBy(Seat::coach, Collectors.mapping(Seat::number, Collectors.counting())));
     }
 
